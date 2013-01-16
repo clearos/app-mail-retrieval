@@ -5,4 +5,4 @@
 
 logger -p local6.notice -t installer "app-mail-retrieval-core - setting fetchmail boot"
 chkconfig --add fetchmail
-chkconfig fetchmail off
+chkconfig fetchmail on

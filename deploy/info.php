@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_retrieval';
-$app['version'] = '1.3.1';
+$app['version'] = '1.3.2';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -36,6 +36,13 @@ $app['core_file_manifest'] = array(
     'fetchmail.init'=> array(
         'target' => '/etc/rc.d/init.d/fetchmail',
         'mode' => '0755',
+    ),
+    'fetchmail.conf'=> array(
+        'target' => '/etc/fetchmail',
+        'mode' => '0700',
+        'owner' => 'fetchmail',
+        'config' => TRUE,
+        'config_params' => 'noreplace',
     )
 );
 

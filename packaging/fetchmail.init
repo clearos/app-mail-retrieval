@@ -5,7 +5,7 @@
 # chkconfig: 2345 99 01
 # description: A software package for fetching mail from remote servers.
 # processname: fetchmail
-# pidfile: /var/run/fetchmail.pid
+# pidfile: /var/run/fetchmail/fetchmail.pid
 # config: /etc/fetchmail
 
 # Source function library.
@@ -17,11 +17,12 @@
 # Check that networking is up.
 #[ ${NETWORKING} = "no" ] && exit 0
 
-pidfile="/var/run/fetchmail/fetchmail.pid"
+USER="fetchmail"
+PIDFILE="/var/run/fetchmail/fetchmail.pid"
+RETVAL=0
+
 args="-f /etc/fetchmail --syslog --pidfile=$PIDFILE"
 prog="fetchmail"
-USER="fetchmail"
-RETVAL=0
 
 # See how we were called.
 case "$1" in
