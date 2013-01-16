@@ -39,7 +39,7 @@ $app['core_file_manifest'] = array(
     ),
     'fetchmail.conf'=> array(
         'target' => '/etc/fetchmail',
-        'mode' => '0700',
+        'mode' => '0600',
         'owner' => 'fetchmail',
         'config' => TRUE,
         'config_params' => 'noreplace',
