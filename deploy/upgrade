@@ -1,0 +1,7 @@
+#!/bin/sh
+
+getent passwd fetchmail >/dev/null || \
+    useradd -r -g fetchmail -d %{_localstatedir}/log/fetchmail -s /sbin/nologin \
+    -c "Fetchmail" fetchmail
+exit 0
+
