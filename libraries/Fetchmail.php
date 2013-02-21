@@ -156,7 +156,7 @@ class Fetchmail extends Daemon
 
         Validation_Exception::is_valid($this->validate_server($server));
         Validation_Exception::is_valid($this->validate_protocol($protocol));
-        Validation_Exception::is_valid($this->validate_ssl($ssl));
+        Validation_Exception::is_valid($this->validate_state($ssl));
         Validation_Exception::is_valid($this->validate_username($username));
         Validation_Exception::is_valid($this->validate_password($password));
         Validation_Exception::is_valid($this->validate_local_username($local));
