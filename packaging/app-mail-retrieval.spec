@@ -1,7 +1,7 @@
 
 Name: app-mail-retrieval
 Epoch: 1
-Version: 1.3.2
+Version: 1.3.3
 Release: 1%{dist}
 Summary: Mail Retrieval
 License: GPLv3
