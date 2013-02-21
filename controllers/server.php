@@ -60,6 +60,10 @@ require clearos_app_base('base') . '/controllers/daemon.php';
 
 class Server extends Daemon
 {
+    /**
+     * Mail retrieval daemon constructor.
+     */
+
     function __construct()
     {
         parent::__construct('fetchmail', 'mail_retrieval');

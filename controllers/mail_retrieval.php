@@ -63,7 +63,7 @@ class Mail_Retrieval extends ClearOS_Controller
         // Load views
         //-----------
 
-        $views = array('mail_retrieval/server');
+        $views = array('mail_retrieval/server', 'mail_retrieval/entries');
 
         $this->page->view_forms($views, lang('mail_retrieval_app_name'));
     }
