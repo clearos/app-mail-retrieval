@@ -1,4 +1,0 @@
-#!/bin/sh
-
-getent passwd fetchmail >/dev/null || useradd -r -d /var/run/fetchmail -s /sbin/nologin -c "Fetchmail" fetchmail
-exit 0

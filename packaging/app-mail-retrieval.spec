@@ -41,6 +41,9 @@ install -D -m 0600 packaging/fetchmail.conf %{buildroot}/etc/fetchmail
 install -D -m 0755 packaging/fetchmail.init %{buildroot}/etc/rc.d/init.d/fetchmail
 install -D -m 0644 packaging/fetchmail.php %{buildroot}/var/clearos/base/daemon/fetchmail.php
 
+%pre core
+/usr/bin/getent passwd fetchmail >/dev/null || /usr/sbin/useradd -r -d /var/run/fetchmail -s /sbin/nologin -c "Fetchmail" fetchmail
+
 %post
 logger -p local6.notice -t installer 'app-mail-retrieval - installing'
 

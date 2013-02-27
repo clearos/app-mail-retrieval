@@ -60,3 +60,6 @@ $app['core_directory_manifest'] = array(
         'group' => 'fetchmail',
     )
 );
+
+$app['core_preinstall'] = "/usr/bin/getent passwd fetchmail >/dev/null || /usr/sbin/useradd -r -d /var/run/fetchmail -s /sbin/nologin -c \"Fetchmail\" fetchmail\n";
+
