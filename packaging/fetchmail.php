@@ -16,12 +16,13 @@ clearos_load_language('mail_retrieval');
 ///////////////////////////////////////////////////////////////////////////////
 // C O N F I G L E T
 ///////////////////////////////////////////////////////////////////////////////
+// TODO: pid file handling is busted - see if 6.4 workaround will get around it.
+// 'pid_file' => '/var/run/fetchmail/fetchmail.pid',
 
 $configlet = array(
 	'title' => lang('mail_retrieval_app_name'),
 	'package' => 'fetchmail',
 	'process_name' => 'fetchmail',
-	'pid_file' => '/var/run/fetchmail/fetchmail.pid',
 	'reloadable' => FALSE,
 	'url' => '/app/mail_retrieval'
 );
