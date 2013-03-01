@@ -574,7 +574,7 @@ class Fetchmail extends Daemon
             $line .= "password \"$password\" ";
 
         if ($local)
-            $line .= "is \"$local@localhost\" here ";
+            $line .= "is \"$local@localhost.\" here ";
 
         if ($keep)
             $line .= "keep ";
