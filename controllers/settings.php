@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Mail Retrieval controller.
+ * Mail retrieval settings controller.
  *
  * @category   Apps
  * @package    Mail_Retrieval
@@ -34,7 +34,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * Mail Retrieval controller.
+ * Mail retrieval settings controller.
  *
  * @category   Apps
  * @package    Mail_Retrieval
@@ -45,26 +45,87 @@
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_retrieval/
  */
 
-class Mail_Retrieval extends ClearOS_Controller
+class Settings extends ClearOS_Controller
 {
     /**
-     * Mail Retrieval summary view.
+     * Mail retrieval settings controller
      *
      * @return view
      */
 
     function index()
     {
-        // Load libraries
+        $this->_common('view');
+    }
+
+    /**
+     * Edit view.
+     *
+     * @return view
+     */
+
+    function edit()
+    {
+        $this->_common('edit');
+    }
+
+    /**
+     * View view.
+     *
+     * @return view
+     */
+
+    function view()
+    {
+        $this->_common('view');
+    }
+
+    /**
+     * Common view/edit handler.
+     *
+     * @param string $form_type form type
+     *
+     * @return view
+     */
+
+    function _common($form_type)
+    {
+        // Load dependencies
+        //------------------
+
+        $this->lang->load('base');
+        $this->load->library('mail_retrieval/Fetchmail');
+
+        // Handle form submit
+        //-------------------
+
+        if ($this->input->post('submit')) {
+            try {
+                $this->fetchmail->set_poll_interval($this->input->post('interval'));
+                $this->fetchmail->reset(TRUE);
+
+                $this->page->set_status_updated();
+            } catch (Exception $e) {
+                $this->page->view_exception($e);
+                return;
+            }
+        }
+
+        // Load view data
         //---------------
 
-        $this->lang->load('mail_retrieval');
+        try {
+            $data['form_type'] = $form_type;
+            $data['interval'] = $this->fetchmail->get_poll_interval();
+            $data['intervals'] = $this->fetchmail->get_poll_intervals();
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
 
         // Load views
         //-----------
 
-        $views = array('mail_retrieval/settings', 'mail_retrieval/server', 'mail_retrieval/entries');
-
-        $this->page->view_forms($views, lang('mail_retrieval_app_name'));
+        $this->page->view_form('mail_retrieval/settings', $data, lang('base_settings'));
     }
 }

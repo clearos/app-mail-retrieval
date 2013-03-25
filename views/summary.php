@@ -42,7 +42,6 @@ $this->lang->load('network');
 
 $headers = array(
     lang('mail_retrieval_server'),
-    lang('network_protocol'),
     lang('mail_retrieval_remote_username'),
     lang('mail_retrieval_local_username'),
 );
@@ -59,6 +58,9 @@ $anchors = array(anchor_add('/app/mail_retrieval/entries/add'));
 
 foreach ($entries as $id => $details) {
     $key_encoded = strtr(base64_encode($id . '|' . $details['username'] . '|' . $details['poll']),  '+/=', '-_.');
+    $username = (strlen($details['username']) > 18) ? substr($details['username'], 0, 18) . '...' : $details['username'];
+    $poll = (strlen($details['poll']) > 18) ? substr($details['poll'], 0, 18) . '...' : $details['poll'];
+    $is = (strlen($details['is']) > 18) ? substr($details['is'], 0, 18) . '...' : $details['is'];
 
     $detail_buttons = button_set(
         array(
@@ -71,10 +73,9 @@ foreach ($entries as $id => $details) {
     $item['action'] = '/app/mail_retrieval/entries/edit/' . $key_encoded;
     $item['anchors'] = $detail_buttons;
     $item['details'] = array(
-        $details['poll'],
-        $protocols[$details['protocol']],
-        $details['username'],
-        $details['is']
+        $poll,
+        $username,
+        $is
     );
 
     $items[] = $item;

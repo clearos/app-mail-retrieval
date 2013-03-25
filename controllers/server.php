@@ -68,4 +68,40 @@ class Server extends Daemon
     {
         parent::__construct('fetchmail', 'mail_retrieval');
     }
+
+    /**
+     * Daemon status.
+     *
+     * @return view
+     */
+
+    function status()
+    {
+        // Load libraries
+        //---------------
+
+        $this->load->library('mail_retrieval/Fetchmail');
+
+        // Load view data
+        //---------------
+
+        try {
+            $enabled_count = $this->fetchmail->get_entries_count(TRUE);
+        } catch (Exception $e) {
+            $this->page->view_exception($e);
+            return;
+        }
+
+        if ($enabled_count === 0) {
+            $status['status'] = 'no_entries';
+        } else {
+            $this->load->library('base/Daemon', $this->daemon_name);
+            $status['status'] = $this->daemon->get_status();
+        }
+
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Content-type: application/json');
+
+        echo json_encode($status);
+    }
 }

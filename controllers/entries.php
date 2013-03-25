@@ -222,6 +222,8 @@ class Entries extends ClearOS_Controller
 
         if ($this->input->post('submit') && ($form_ok === TRUE)) {
             try {
+                $enabled_count_before = $this->fetchmail->get_entries_count(TRUE);
+
                 if ($form_type === 'edit') {
                     $this->fetchmail->update_mail_entry(
                         $id,
@@ -251,6 +253,12 @@ class Entries extends ClearOS_Controller
 
                     $this->page->set_status_added();
                 }
+
+                // Be nice and neable fetchmail when the first active entry is enabled
+                $enabled_count_after = $this->fetchmail->get_entries_count(TRUE);
+
+                if (($enabled_count_before === 0) && ($enabled_count_after === 1))
+                    $this->fetchmail->set_running_state(TRUE);
 
                 redirect('/mail_retrieval/entries');
             } catch (Exception $e) {

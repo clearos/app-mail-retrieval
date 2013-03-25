@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Mail Retrieval controller.
+ * Mail retrieval settings view.
  *
- * @category   Apps
+ * @category   ClearOS
  * @package    Mail_Retrieval
- * @subpackage Controllers
+ * @subpackage Views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -25,46 +25,44 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.  
+//  
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-// C L A S S
+// Load dependencies
 ///////////////////////////////////////////////////////////////////////////////
 
-/**
- * Mail Retrieval controller.
- *
- * @category   Apps
- * @package    Mail_Retrieval
- * @subpackage Controllers
- * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2013 ClearFoundation
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/mail_retrieval/
- */
+$this->lang->load('base');
+$this->lang->load('mail_retrieval');
 
-class Mail_Retrieval extends ClearOS_Controller
-{
-    /**
-     * Mail Retrieval summary view.
-     *
-     * @return view
-     */
+///////////////////////////////////////////////////////////////////////////////
+// Form handler
+///////////////////////////////////////////////////////////////////////////////
 
-    function index()
-    {
-        // Load libraries
-        //---------------
-
-        $this->lang->load('mail_retrieval');
-
-        // Load views
-        //-----------
-
-        $views = array('mail_retrieval/settings', 'mail_retrieval/server', 'mail_retrieval/entries');
-
-        $this->page->view_forms($views, lang('mail_retrieval_app_name'));
-    }
+if ($form_type === 'edit') {
+    $read_only = FALSE;
+    $buttons = array(
+        form_submit_update('submit'),
+        anchor_cancel('/app/mail_retrieval/settings'),
+    );
+} else {
+    $read_only = TRUE;
+    $buttons = array(
+        anchor_edit('/app/mail_retrieval/settings/edit')
+    );
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// Form
+///////////////////////////////////////////////////////////////////////////////
+
+echo form_open('mail_retrieval/settings');
+echo form_header(lang('base_settings'));
+
+echo field_dropdown('interval', $intervals, $interval, lang('base_interval'), $read_only);
+
+echo field_button_set($buttons);
+
+echo form_footer();
+echo form_close();

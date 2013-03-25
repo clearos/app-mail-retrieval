@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_retrieval';
-$app['version'] = '1.4.20';
+$app['version'] = '1.4.24';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -27,6 +27,7 @@ $app['subcategory'] = lang('base_subcategory_mail');
 
 $app['controllers']['mail_retrieval']['title'] = $app['name'];
 $app['controllers']['entries']['title'] = lang('mail_retrieval_mail_entries');
+$app['controllers']['settings']['title'] = lang('base_settings');
 
 /////////////////////////////////////////////////////////////////////////////
 // Packaging

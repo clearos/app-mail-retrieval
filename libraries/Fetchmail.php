@@ -201,6 +201,33 @@ class Fetchmail extends Daemon
     }
 
     /**
+     * Returns the number of entries.
+     *
+     * @return integer number of enabled entries
+     * @throws Engine_Exception
+     */
+
+    public function get_entries_count($only_enabled = FALSE)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $entries = $this->get_mail_entries();
+
+        if ($only_enabled) {
+            $count = 0;
+
+            foreach ($entries as $entry) {
+                if ($entry['state'])
+                    $count++;
+            }
+        } else {
+            $count = count($entries);
+        }
+
+        return $count;
+    }
+
+    /**
      * Returns mail entry.
      *
      * @param integer $start starting line
@@ -337,6 +364,26 @@ class Fetchmail extends Daemon
             $file->dump_contents_from_array($contents);
 
         return $interval;
+    }
+
+    /**
+     * Returns poll intervals.
+     *
+     * @return array poll intervals
+     * @throws Engine_Exception
+     */
+
+    public function get_poll_intervals()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        return array(
+            '300' => 5 . ' ' . lang('base_minutes'),
+            '600' => 10 . ' ' . lang('base_minutes'),
+            '1200' => 20 . ' ' . lang('base_minutes'),
+            '1800' => 30 . ' ' . lang('base_minutes'),
+            '3600' => 60 . ' ' . lang('base_minutes'),
+        );
     }
 
     /**
