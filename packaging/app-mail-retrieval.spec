@@ -19,6 +19,7 @@ Summary: Mail Retrieval - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
+Requires: app-base >= 1:1.4.24
 Requires: app-network-core >= 1:1.1.1
 Requires: app-smtp-core >= 1:1.3.1
 Requires: fetchmail

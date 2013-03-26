@@ -34,6 +34,7 @@ $app['controllers']['settings']['title'] = lang('base_settings');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
+    'app-base >= 1:1.4.24',
     'app-network-core >= 1:1.1.1',
     'app-smtp-core >= 1:1.3.1',
     'fetchmail',
