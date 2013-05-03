@@ -57,7 +57,7 @@ $anchors = array(anchor_add('/app/mail_retrieval/entries/add'));
 ///////////////////////////////////////////////////////////////////////////////
 
 foreach ($entries as $id => $details) {
-    $key_encoded = strtr(base64_encode($id . '|' . $details['username'] . '|' . $details['poll']),  '+/=', '-_.');
+    $key_encoded = strtr(base64_encode($details['start'] . '|' . $details['username'] . '|' . $details['poll']),  '+/=', '-_.');
     $username = (strlen($details['username']) > 18) ? substr($details['username'], 0, 18) . '...' : $details['username'];
     $poll = (strlen($details['poll']) > 18) ? substr($details['poll'], 0, 18) . '...' : $details['poll'];
     $is = (strlen($details['is']) > 18) ? substr($details['is'], 0, 18) . '...' : $details['is'];

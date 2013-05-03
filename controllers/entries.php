@@ -160,6 +160,7 @@ class Entries extends ClearOS_Controller
         $key_decoded = base64_decode(strtr($key, '-_.', '+/='));
         $params = preg_split('/\|/', $key_decoded);
 
+echo $key_decoded;
         $this->_item('edit', $params[0]);
     }
 

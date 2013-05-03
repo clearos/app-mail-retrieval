@@ -41,7 +41,7 @@ $this->load->language('base');
 // Form handler
 ///////////////////////////////////////////////////////////////////////////////
 
-$key_encoded = strtr(base64_encode($id . '|' . $entry['username'] . '|' . $entry['poll']),  '+/=', '-_.');
+$key_encoded = strtr(base64_encode($entry['start'] . '|' . $entry['username'] . '|' . $entry['poll']),  '+/=', '-_.');
 
 if ($form_type === 'edit') {
     $read_only = FALSE;

@@ -197,6 +197,7 @@ class Fetchmail extends Daemon
         $contents = $file->get_contents_as_array();
 
         array_splice($contents, $start, $length);
+	print_r($contents);
         $file->dump_contents_from_array($contents);
     }
 
@@ -241,8 +242,10 @@ class Fetchmail extends Daemon
         clearos_profile(__METHOD__, __LINE__);
 
         $entries = $this->get_mail_entries();
-
-        return $entries[$start];
+	foreach ($entries as $entry) {
+		if ($entry['start'] == $start)
+			return $entry;
+	}
     }
 
     /**
