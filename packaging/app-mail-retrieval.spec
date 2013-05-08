@@ -1,7 +1,7 @@
 
 Name: app-mail-retrieval
 Epoch: 1
-Version: 1.4.33
+Version: 1.4.34
 Release: 1%{dist}
 Summary: Mail Retrieval
 License: GPLv3
@@ -15,7 +15,7 @@ Requires: app-base
 The Mail Retrieval app can be used to fetch mail from external POP and IMAP servers.
 
 %package core
-Summary: Mail Retrieval - APIs and install
+Summary: Mail Retrieval - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
@@ -41,6 +41,9 @@ install -d -m 0755 %{buildroot}/var/run/fetchmail
 install -D -m 0600 packaging/fetchmail.conf %{buildroot}/etc/fetchmail
 install -D -m 0755 packaging/fetchmail.init %{buildroot}/etc/rc.d/init.d/fetchmail
 install -D -m 0644 packaging/fetchmail.php %{buildroot}/var/clearos/base/daemon/fetchmail.php
+
+%pre core
+/usr/bin/getent passwd fetchmail >/dev/null || /usr/sbin/useradd -r -d /var/run/fetchmail -s /sbin/nologin -c "Fetchmail" fetchmail
 
 %post
 logger -p local6.notice -t installer 'app-mail-retrieval - installing'

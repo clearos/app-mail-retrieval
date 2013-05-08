@@ -197,7 +197,6 @@ class Fetchmail extends Daemon
         $contents = $file->get_contents_as_array();
 
         array_splice($contents, $start, $length);
-	print_r($contents);
         $file->dump_contents_from_array($contents);
     }
 
