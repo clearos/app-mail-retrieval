@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Add fetchmail user
+#-------------------
+
+getent group fetchmail >/dev/null || groupadd -r fetchmail
+getent passwd fetchmail >/dev/null || \
+    useradd -r -g fetchmail -s /sbin/nologin -c "Fetchmail" fetchmail
