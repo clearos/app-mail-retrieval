@@ -3,9 +3,9 @@
 /**
  * Mail retrieval entries controller.
  *
- * @category   Apps
- * @package    Mail_Retrieval
- * @subpackage Controllers
+ * @category   apps
+ * @package    mail-retrieval
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -42,9 +42,9 @@ use \Exception as Exception;
 /**
  * Mail retrieval entries controller.
  *
- * @category   Apps
- * @package    Mail_Retrieval
- * @subpackage Controllers
+ * @category   apps
+ * @package    mail-retrieval
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

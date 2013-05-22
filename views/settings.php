@@ -3,9 +3,9 @@
 /**
  * Mail retrieval settings view.
  *
- * @category   ClearOS
- * @package    Mail_Retrieval
- * @subpackage Views
+ * @category   apps
+ * @package    mail-retrieval
+ * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
