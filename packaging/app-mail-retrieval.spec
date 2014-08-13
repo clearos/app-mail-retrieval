@@ -1,7 +1,7 @@
 
 Name: app-mail-retrieval
 Epoch: 1
-Version: 1.4.34
+Version: 1.6.5
 Release: 1%{dist}
 Summary: Mail Retrieval
 License: GPLv3
@@ -81,7 +81,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/mail_retrieval/packaging
-%exclude /usr/clearos/apps/mail_retrieval/tests
 %dir /usr/clearos/apps/mail_retrieval
 %dir %attr(0755,fetchmail,fetchmail) /var/run/fetchmail
 /usr/clearos/apps/mail_retrieval/deploy

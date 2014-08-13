@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Set default start/boot
-#-----------------------
-
-logger -p local6.notice -t installer "app-mail-retrieval-core - setting fetchmail boot"
-chkconfig --add fetchmail
-chkconfig fetchmail on
