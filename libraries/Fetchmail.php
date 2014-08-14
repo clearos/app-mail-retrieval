@@ -7,7 +7,7 @@
  * @package    mail-retrieval
  * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2013 ClearFoundation
+ * @copyright  2013-2014 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_retrieval/
  */
@@ -84,7 +84,7 @@ clearos_load_library('base/Validation_Exception');
  * @package    mail-retrieval
  * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2013 ClearFoundation
+ * @copyright  2013-2014 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_retrieval/
  */
@@ -132,7 +132,7 @@ class Fetchmail extends Daemon
     }
 
     /**
-     * Adds a configuration entry.
+     * Adds a mail entry.
      *
      * @param string  $server   server
      * @param string  $protocol protocol
@@ -203,6 +203,8 @@ class Fetchmail extends Daemon
     /**
      * Returns the number of entries.
      *
+     * @param boolean $only_enabled returns only enabled accounts
+     *
      * @return integer number of enabled entries
      * @throws Engine_Exception
      */
@@ -241,10 +243,11 @@ class Fetchmail extends Daemon
         clearos_profile(__METHOD__, __LINE__);
 
         $entries = $this->get_mail_entries();
-	foreach ($entries as $entry) {
-		if ($entry['start'] == $start)
-			return $entry;
-	}
+
+        foreach ($entries as $entry) {
+            if ($entry['start'] == $start)
+                return $entry;
+        }
     }
 
     /**
