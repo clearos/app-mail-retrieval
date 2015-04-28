@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_retrieval';
-$app['version'] = '2.0.18';
+$app['version'] = '2.0.24';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -65,3 +65,7 @@ $app['core_directory_manifest'] = array(
 
 $app['core_preinstall'] = "/usr/bin/getent passwd fetchmail >/dev/null || /usr/sbin/useradd -r -d /var/run/fetchmail -s /sbin/nologin -c \"Fetchmail\" fetchmail\n";
 
+$app['delete_dependency'] = array(
+    'app-mail-retrieval-core',
+    'fetchmail',
+);
