@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_retrieval';
-$app['version'] = '2.0.24';
+$app['version'] = '2.1.6';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
