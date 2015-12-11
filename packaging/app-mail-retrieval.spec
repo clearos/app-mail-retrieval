@@ -1,7 +1,7 @@
 
 Name: app-mail-retrieval
 Epoch: 1
-Version: 2.1.6
+Version: 2.2.0
 Release: 1%{dist}
 Summary: Mail Retrieval
 License: GPLv3
@@ -38,6 +38,7 @@ mkdir -p -m 755 %{buildroot}/usr/clearos/apps/mail_retrieval
 cp -r * %{buildroot}/usr/clearos/apps/mail_retrieval/
 
 install -d -m 0755 %{buildroot}/var/run/fetchmail
+install -D -m 0644 packaging/app-mail-retrieval-tmpfiles.conf %{buildroot}/usr/lib/tmpfiles.d/app-mail-retrieval.conf
 install -D -m 0600 packaging/fetchmail.conf %{buildroot}/etc/fetchmail
 install -D -m 0755 packaging/fetchmail.init %{buildroot}/etc/rc.d/init.d/fetchmail
 install -D -m 0644 packaging/fetchmail.php %{buildroot}/var/clearos/base/daemon/fetchmail.php
@@ -86,6 +87,7 @@ exit 0
 /usr/clearos/apps/mail_retrieval/deploy
 /usr/clearos/apps/mail_retrieval/language
 /usr/clearos/apps/mail_retrieval/libraries
+/usr/lib/tmpfiles.d/app-mail-retrieval.conf
 %attr(0600,fetchmail,root) %config(noreplace) /etc/fetchmail
 /etc/rc.d/init.d/fetchmail
 /var/clearos/base/daemon/fetchmail.php

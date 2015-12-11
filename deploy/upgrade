@@ -6,3 +6,8 @@
 getent group fetchmail >/dev/null || groupadd -r fetchmail
 getent passwd fetchmail >/dev/null || \
     useradd -r -g fetchmail -s /sbin/nologin -c "Fetchmail" fetchmail
+
+# Make sure /var/run/fetchmail is created
+#----------------------------------------
+
+/bin/systemd-tmpfiles --create /usr/lib/tmpfiles.d/app-mail-retrieval.conf

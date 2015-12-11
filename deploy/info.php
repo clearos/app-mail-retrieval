@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_retrieval';
-$app['version'] = '2.1.6';
+$app['version'] = '2.2.0';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -42,6 +42,7 @@ $app['core_requires'] = array(
 
 $app['core_file_manifest'] = array(
     'fetchmail.php'=> array('target' => '/var/clearos/base/daemon/fetchmail.php'),
+    'app-mail-retrieval-tmpfiles.conf'=> array('target' => '/usr/lib/tmpfiles.d/app-mail-retrieval.conf'),
     'fetchmail.init'=> array(
         'target' => '/etc/rc.d/init.d/fetchmail',
         'mode' => '0755',
