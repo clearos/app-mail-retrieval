@@ -5,8 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_retrieval';
-$app['version'] = '2.2.0';
-$app['release'] = '1';
+$app['version'] = '2.5.0';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
 $app['license'] = 'GPLv3';
@@ -33,8 +32,12 @@ $app['controllers']['settings']['title'] = lang('base_settings');
 // Packaging
 /////////////////////////////////////////////////////////////////////////////
 
+$app['requires'] = array(
+    'app-base',
+);
+
 $app['core_requires'] = array(
-    'app-base >= 1:1.4.24',
+    'app-base-core >= 1:1.4.24',
     'app-network-core >= 1:1.1.1',
     'app-smtp-core >= 1:1.3.1',
     'fetchmail',

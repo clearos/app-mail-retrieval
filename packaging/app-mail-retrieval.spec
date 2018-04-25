@@ -1,25 +1,28 @@
 
 Name: app-mail-retrieval
 Epoch: 1
-Version: 2.2.0
+Version: 2.5.0
 Release: 1%{dist}
 Summary: Mail Retrieval
 License: GPLv3
-Group: ClearOS/Apps
+Group: Applications/Apps
+Packager: ClearFoundation
+Vendor: ClearFoundation
 Source: %{name}-%{version}.tar.gz
 Buildarch: noarch
 Requires: %{name}-core = 1:%{version}-%{release}
+Requires: app-base
 Requires: app-base
 
 %description
 The Mail Retrieval app can be used to fetch mail from external POP and IMAP servers.
 
 %package core
-Summary: Mail Retrieval - Core
+Summary: Mail Retrieval - API
 License: LGPLv3
-Group: ClearOS/Libraries
+Group: Applications/API
 Requires: app-base-core
-Requires: app-base >= 1:1.4.24
+Requires: app-base-core >= 1:1.4.24
 Requires: app-network-core >= 1:1.1.1
 Requires: app-smtp-core >= 1:1.3.1
 Requires: fetchmail
@@ -82,6 +85,7 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/mail_retrieval/packaging
+%exclude /usr/clearos/apps/mail_retrieval/unify.json
 %dir /usr/clearos/apps/mail_retrieval
 %dir %attr(0755,fetchmail,fetchmail) /var/run/fetchmail
 /usr/clearos/apps/mail_retrieval/deploy
